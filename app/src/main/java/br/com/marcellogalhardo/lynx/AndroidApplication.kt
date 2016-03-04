@@ -3,6 +3,7 @@ package br.com.marcellogalhardo.lynx
 import android.app.Application
 import android.support.multidex.MultiDex
 import com.parse.Parse
+import com.parse.ParseInstallation
 
 class AndroidApplication: Application() {
 
@@ -14,7 +15,8 @@ class AndroidApplication: Application() {
 
     private fun initializeParse() {
         Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
+        Parse.initialize(applicationContext, "****", "***");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 
 }
